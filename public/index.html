@@ -8,17 +8,18 @@
         <!-- CSS links-->
     <link rel="stylesheet" href="style.css"> 
         <!-- JS links-->
+    <script src="//unpkg.com/brain.js" defer></script>
+    <script type="text/javascript" src="data.js"></script>
     <script src="script.js" defer></script>
 </head>
 <body>
-    <div id="color">
-        <div class="white">White Text</div>
-        <div>Black Text</div>
-        <div id="guess">Guess Text</div>
-    </div>
+    <label for="name">Enter Name: </label>
+    <input id="name" type="text"></input>
+    <button id="submit">Submit</button>
+    <h3 id="greeting">Hello</h3>
 
-    <button id="white-button">White</button>
-    <button id="black-button">Black</button>
+    <button id="male-button">Male</button>
+    <button id="female-button">Female</button>
     <button id="print-button">Print</button>
 </body>
 </html>

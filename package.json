@@ -2,7 +2,7 @@
   "name": "brainjstutorial",
   "version": "1.0.0",
   "description": "",
-  "main": "script.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/MatthewHightech/brainJSTutorial#readme",
   "dependencies": {
-    "brain.js": "^2.0.0-beta.2"
+    "brain.js": "^2.0.0-beta.2",
+    "express": "^4.17.1",
+    "nodemon": "^2.0.4"
   }
 }
