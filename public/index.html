@@ -9,10 +9,12 @@
     <link rel="stylesheet" href="style.css"> 
         <!-- JS links-->
     <script src="//unpkg.com/brain.js" defer></script>
+    <script src="https://unpkg.com/meyda/dist/web/meyda.min.js" defer></script>
     <script type="text/javascript" src="data.js"></script>
-    <script src="script.js" defer></script>
+    <script src="music.js" defer></script>
 </head>
 <body>
+    <!--
     <label for="name">Enter Name: </label>
     <input id="name" type="text"></input>
     <button id="submit">Submit</button>
@@ -21,5 +23,32 @@
     <button id="male-button">Male</button>
     <button id="female-button">Female</button>
     <button id="print-button">Print</button>
+    -->
+
+    <audio
+   controls
+   loop
+   crossorigin="anonymous"
+   id="audio"
+   src="song2.mp3"
+   >
+</audio>
+<button id="start">Start</button>
+<button id="stop">Stop</button>
+
+<div id="wrapper">
+    <div class="regular" id="0">C</div>
+    <div class="sharp" id="1">C#</div>
+    <div class="regular" id="2">D</div>
+    <div class="sharp" id="3">D#</div>
+    <div class="regular" id="4">E</div>
+    <div class="regular" id="5">F</div>
+    <div class="sharp" id="6">F#</div>
+    <div class="regular" id="7">G</div>
+    <div class="sharp" id="8">G#</div>
+    <div class="regular" id="9">A</div>
+    <div class="sharp" id="10">A#</div>
+    <div class="regular" id="11">B</div>
+</div>
 </body>
 </html>
