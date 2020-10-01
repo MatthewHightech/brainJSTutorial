@@ -1,7 +1,7 @@
-const net = new brain.recurrent.LSTM({
+const net = new brain.NeuralNetwork({
     activation: 'sigmoid', // activation function
-    hiddenLayers: [2],
-    iterations: 2000,
+    hiddenLayers: [1],
+    iterations: 200,
     learningRate: 0.5 // global learning rate, useful when training using streams
   });
 
