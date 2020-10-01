@@ -18,8 +18,10 @@
   "homepage": "https://github.com/MatthewHightech/brainJSTutorial#readme",
   "dependencies": {
     "brain.js": "^2.0.0-beta.2",
+    "convert-csv-to-json": "^1.0.0",
     "express": "^4.17.1",
     "meyda": "^5.0.6",
-    "nodemon": "^2.0.4"
+    "nodemon": "^2.0.4",
+    "uniq": "^1.0.1"
   }
 }

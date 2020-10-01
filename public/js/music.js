@@ -1,17 +1,18 @@
-const audioContext = new AudioContext();
+// if meyda is not working
+if (typeof Meyda === "undefined") {
+    alert("Meyda could not be found! Have you included it?");
+} // if
 
+console.log(data[0].input.chroma_stft_mean); 
+
+// new audio object
+const audioContext = new AudioContext();
 // Select the Audio Element from the DOM
 const htmlAudioElement = document.getElementById("audio");
 // Create an "Audio Node" from the Audio Element
 const source = audioContext.createMediaElementSource(htmlAudioElement);
-// Connect the Audio Node to your speakers. Now that the audio lives in the
-// Audio Context, you have to explicitly connect it to the speakers in order to
-// hear it
+// Connect the Audio Node to your speakers.
 source.connect(audioContext.destination);
-
-if (typeof Meyda === "undefined") {
-    alert("Meyda could not be found! Have you included it?");
-  }
 
 // Create the Meyda Analyzer
 const analyzer = Meyda.createMeydaAnalyzer({
@@ -63,4 +64,5 @@ function piano(chroma) {
         }
     }
 }
+
 
