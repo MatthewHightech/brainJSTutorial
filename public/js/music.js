@@ -19,7 +19,7 @@ if (typeof Meyda === "undefined") {
 //console.log(data[0].input.chroma_stft_mean); 
 const net = new brain.NeuralNetwork({
     activation: 'sigmoid', // activation function
-    hiddenLayers: [10],
+    hiddenLayers: [60, 40, 20],
     iterations: 20000,
     learningRate: 0.5 // global learning rate, useful when training using streams
 });
@@ -52,7 +52,7 @@ const analyzer = Meyda.createMeydaAnalyzer({
     "featureExtractors": [
         "rms",
         //"spectralCentroid",
-        "zcr"
+        //"zcr"
     ], 
     // Calculates data and adds it to features everytime the callback runs (86x/sec)
     "callback": features => {
@@ -83,6 +83,12 @@ document.querySelector('#stop').addEventListener('click', function() {
     });
 });
 
+let input_rms = 0; 
+document.querySelector('#rms').addEventListener('change', function() {
+    input_rms = document.getElementById("rms").value;
+    runNet(input_rms);
+});
+
 function piano(chroma) {
     for(let i = 0; i < chroma.length; i++) {
         let key = document.getElementById(i); 
@@ -100,41 +106,49 @@ function piano(chroma) {
 }
 
 //run net
-function runNet() {
+function runNet(rms) {
     testData = {
         "rms_mean": meanRMS,
         //"spectral_centroid_mean": meanCenteroid,
-        "zero_crossing_rate_mean": meanZCR
-     };
-     guess = net.run(testData); 
-     console.log("Blues: " + guess[0] + " - Jazz: " + guess[5]);
-     guess.forEach(element => {
-         console.log(element); 
-     });
+        //"zero_crossing_rate_mean": meanZCR
+    };
+    guess = net.run(testData); 
+    var propValue;
+    for(var propName in guess) {
+        propValue = guess[propName]
+
+        console.log(propName,propValue);
+    }
+    /*
+     for (let i = 0; i < guess.length; i++) {
+        console.log(i + ": " + guess[i]);
+     }
+     */
 }
 
 // helper functions
-
 function getAverage(input) {
     count++; 
     totalRMS += input.rms; 
-    //totalCenteroid += input.spectralCentroid;
-    totalZCR += input.zcr; 
-
-
+    /*
+    if (count > 5) {
+        totalCenteroid += input.spectralCentroid;
+    }
+    totalZCR += input.zcr;
+    */
 }
 
 function tallyUp(){
     meanRMS = totalRMS/count; 
-    //meanCenteroid = totalCenteroid/count;
-    meanZCR = (totalZCR/count)/100;
+    //meanCenteroid = (totalCenteroid/count)*10; 
+    //meanZCR = (totalZCR/count)/1000;
     printResults(); 
 }
 
 function printResults() {
     console.log("RMS_Mean: " + meanRMS);
-    console.log("ZCR_Mean: " + meanZCR);
-    //console.log("SpectralCentroid_Mean: " + (meanCenteroid != meanCenteroid));
+    //console.log("ZCR_Mean: " + meanZCR);
+    //console.log("SpectralCentroid_Mean: " + meanCenteroid);
 }
 
 
